@@ -199,12 +199,6 @@ git push -u origin main
 
 ---
 
-## Known Issues
-
-- **Team Name Inconsistency:** `public/index.html` lists “Mammoth” for UTA, while `NHL_TEAMS` in `index.js` uses “Utah Hockey Club”. To fix, update the dropdown in `index.html`.
-
----
-
 ## TODO
 
 - Add a date picker for `/score` to select custom dates.
