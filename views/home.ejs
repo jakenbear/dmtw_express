@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did My NHL Team Win?</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <a href="/" class="team-selection-link">TEAM SELECTION</a>
+    <img id="teamLogo" src="https://assets.nhle.com/logos/nhl/svg/<%= team %>_light.svg" alt="<%= team %> Logo" class="team-logo" onclick="refreshPage()">
+    <div id="gameStatus" class="game-status <%= gameStatus.toLowerCase() %>"><%= gameStatus %></div>
+    <button class="game-summary-button" style="display: <%= showSummaryButton ? 'block' : 'none' %>" onclick="location.href='/score?team=<%= team %>&date=<%= date %>'">Game Summary</button>
+    <a id="yesterdayLink" href="<%= isYesterday ? '/home?team=' + team : '/yesterday?team=' + team %>" class="check-yesterday-link"><%= isYesterday ? '[Back to Today]' : '[Check Yesterday]' %></a>
+    
+    <script src="/js/script.js"></script>
+</body>
+</html>

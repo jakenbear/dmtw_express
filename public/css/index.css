@@ -1,0 +1,174 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #2c3e50;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.intro-container {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    background: linear-gradient(90deg, #FFFFFF, #E5E5E5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+h1:hover {
+    transform: scale(1.02);
+}
+
+h1 span.team {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #7EC0EE;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: 
+        0 0 10px rgba(126, 192, 238, 0.4),
+        1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+h1 span.team::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 3px;
+    background-color: #7EC0EE;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(126, 192, 238, 0.5);
+}
+
+.intro-text {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ecf0f1;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.step h3 {
+    margin: 0 0 10px;
+    color: white;
+}
+
+.step p {
+    margin: 0;
+    color: #ecf0f1;
+}
+
+.division-container {
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.division-container h2 {
+    color: white;
+    font-size: 1.5em;
+    margin: 0 0 20px;
+}
+
+.teams-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.team-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.team-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.team-name {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h1 span.team {
+        font-size: 1.8rem;
+    }
+
+    h1 span.team::after {
+        height: 2px;
+        width: 50%;
+    }
+
+    .steps-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .teams-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .division-container h2 {
+        font-size: 1.3em;
+    }
+}
