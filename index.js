@@ -125,10 +125,7 @@ app.get('/home', async (req, res) => {
         console.log(`Filtered teamGames for ${team} on ${startDate}:`, teamGames);
 
         if (teamGames.length > 0) {
-            const latestGame = teamGames.find(game => {
-                const gameDate = new Date(game.startTime);
-                return getDateString(gameDate) === startDate;
-            }) || teamGames[0];
+            const latestGame = teamGames[0]; // Use first game in range
             console.log(`Selected game for ${team}:`, latestGame);
             switch (latestGame.status.state) {
                 case 'FINAL':
@@ -194,20 +191,8 @@ app.get('/score', async (req, res) => {
         console.log(`Filtered teamGames for ${team} on ${date}:`, teamGames);
 
         if (teamGames.length > 0) {
-            const selectedGame = teamGames.find(game => {
-                const gameDate = new Date(game.startTime);
-                return getDateString(gameDate) === startDate;
-            }) || teamGames[0];
+            const selectedGame = teamGames[0]; // Use first game in range
             console.log(`Selected game for ${team} on ${date}:`, selectedGame);
-
-            const gameDate = new Date(selectedGame.startTime);
-            console.log(`Game startTime: ${selectedGame.startTime}, parsed gameDate: ${gameDate}`);
-            const isWithinDate = getDateString(gameDate) === startDate;
-            console.log(`isWithinDate check: gameDate=${getDateString(gameDate)}, startDate=${startDate}, result=${isWithinDate}`);
-
-            if (!isWithinDate) {
-                return res.render('score', { team, summary: `No game found for ${NHL_TEAMS[team]} on ${date}`, videoRecapLink: null, NHL_TEAMS, isYesterday });
-            }
 
             const homeTeam = selectedGame.teams.home.teamName;
             const awayTeam = selectedGame.teams.away.teamName;
@@ -277,6 +262,7 @@ app.get('/yesterday', async (req, res) => {
     nextDay.setDate(yesterday.getDate() + 1);
     const endDate = formatDate(nextDay);
     const url = `https://nhl-score-api.herokuapp.com/api/scores?startDate=${startDate}&endDate=${endDate}`;
+    console.log(`YESTERDAY ROUTE: startDate=${startDate}, endDate=${endDate}`);
 
     try {
         const response = await axios.get(url);
